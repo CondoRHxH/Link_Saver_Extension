@@ -23,13 +23,6 @@ module.exports = user
 
 
 
-
-
-
-
-
-
-
 // const userModel = mongoose.model() 
 // main().catch(err => console.log(err));
 // main().then(msg => console.log("connecter ajomi",msg));

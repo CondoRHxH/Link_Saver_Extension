@@ -10,10 +10,8 @@ async function connection(){
     await mongoose.connect('mongodb://127.0.0.1:27017/myapp');
 
 }
-connection().then(msg => console.log('connection good ',msg))
 
-connection().catch(err => console.log(err))
-
+connection().then(msg => console.log('connection good', msg)).catch(err => console.log(err))
 
 
 app.listen(3000,()=>{

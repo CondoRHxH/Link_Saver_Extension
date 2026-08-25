@@ -1,35 +1,27 @@
-// const server = require('../server')
 const bcrypt = require('bcrypt')
 
 const express = require('express')
-const app = express()
 const user = require('../model/user')
-const mongoose  = require('mongoose')
 
-const saltRounds = 15
+const saltRounds = 10
 
 const router = express.Router()
 
 router.use(express.json());
 
 
+
 //Route of the first page display 
 router.get('/',(req,res)=>{
-    console.log("geg")
     res.send('res')
 })
 
 
 router.post('/register', async (req,res)=>{
-    console.log("wawas")
-    // res.send('res')
-    let {name,email,password} = req.body;
+  let {name,email,password} = req.body;
 
 
-    const hashedPassword = await bcrypt.hash(
-        password,
-        saltRounds
-    )
+  const hashedPassword = await bcrypt.hash(password,saltRounds)
 
   const newUser = await user.create({
     name:name,
@@ -37,6 +29,49 @@ router.post('/register', async (req,res)=>{
     password:hashedPassword
   })
   res.send('Done')
+})
+
+
+
+router.post('/login',async(req,res)=>{
+  try{  
+
+    let {name,email,password} = req.body;
+    
+
+    const db_email  = await user.findOne({ email });
+
+    if(!db_email){
+      return res.end('no User found')
+    }
+
+    if(db_email.email === email){
+      const UncryptedPass = await bcrypt.compare(password,db_email.password)
+      if(UncryptedPass){
+        res.end('mrhba bik again')
+      } else {
+        res.end('GO REGISTER NOOOOOOOOOW')
+      }
+    }
+
+  } catch(err){
+    res.status(500).json({ error: err.message });
+  }
+
+
+
+
+
+
+
+
+  // const user = await user.findOne({ name:req.body.name,email: req.body.email, password:req.body.password }); 
+  // console.log(user)
+  
+
+  // await MyModel.find({ name: name, email: email,password: UncryptedPass}).exec();
+
+
 })
 
 module.exports = router
