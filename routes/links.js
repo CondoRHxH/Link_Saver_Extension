@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken')
 const user = require('../model/user')
 const router = express.Router()
 
-router.use(express.json())
+// router.use(express.json())
 
 
 

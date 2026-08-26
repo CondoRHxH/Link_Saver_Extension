@@ -2,13 +2,13 @@ const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 const express = require('express')
 const user = require('../model/user')
+const auth = require('../middleware/auth') 
 
 const saltRounds = 10
 
 const router = express.Router()
 
 router.use(express.json());
-
 
 
 //Route of the first page display 
