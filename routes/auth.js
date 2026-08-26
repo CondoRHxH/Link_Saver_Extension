@@ -10,7 +10,7 @@ const router = express.Router()
 
 router.use(express.json());
 
-router.use('/other/',auth ,(req,res)=>{
+router.use('/other',auth ,(req,res)=>{
   res.send('WECLOME')
 })
 
@@ -18,6 +18,7 @@ router.use('/other/',auth ,(req,res)=>{
 router.get('/',(req,res)=>{
     res.send('res')
 })
+
 
 
 router.post('/register', async (req,res)=>{
@@ -51,7 +52,7 @@ router.post('/login',async(req,res)=>{
     if(db_email.email === email){
       const UncryptedPass = await bcrypt.compare(password,db_email.password)
       if(UncryptedPass){
-        const token = jwt.sign(db_email.name, test_temp);
+        const token = jwt.sign({userId: db_email._id.toString()}, test_temp);
         res.json({
           message : 'Fin al3awd tfdl, and MRHHHHHHHHHBA',
           jwt :token

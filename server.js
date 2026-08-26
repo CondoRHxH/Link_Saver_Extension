@@ -1,15 +1,23 @@
 const mongoose = require('mongoose')
 const express = require('express')
+
+
 const router = require('./routes/auth')
+const linksRouter = require('./routes/links')
 
 const app = express()
 
 app.use('/',router)
+app.use('/',linksRouter)
+
 
 async function connection(){
     await mongoose.connect('mongodb://127.0.0.1:27017/myapp');
 
 }
+
+app.use('/', require('./routes/links')) //To test out any route if it is working
+
 
 connection().then(msg => console.log('connection good', msg)).catch(err => console.log(err))
 

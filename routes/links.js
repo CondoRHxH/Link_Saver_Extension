@@ -1,13 +1,21 @@
 const express = require('express')
-const jwt = require('jsonwebtoken')
-
+const link  = require('../model/link')
+const auth = require('../middleware/auth')
 const user = require('../model/user')
+
+
 const router = express.Router()
 
-// router.use(express.json())
 
-
-
-router.post('/links',(req,res)=>{
-    let {url,note,tags} = req.body();
+router.post('/links',auth,(req,res)=>{
+    if(req.user){
+        console.log(req.user)
+    res.send('hy')
+    }else{
+           console.log('no req.user found')
+        res.status(401).send('Unauthorized')
+    }
+   
 })
+
+module.exports = router
