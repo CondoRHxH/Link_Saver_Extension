@@ -10,6 +10,9 @@ const router = express.Router()
 
 router.use(express.json());
 
+router.use('/other/',auth ,(req,res)=>{
+  res.send('WECLOME')
+})
 
 //Route of the first page display 
 router.get('/',(req,res)=>{
