@@ -1,5 +1,5 @@
 const bcrypt = require('bcrypt')
-
+const jwt = require('jsonwebtoken')
 const express = require('express')
 const user = require('../model/user')
 
@@ -31,7 +31,7 @@ router.post('/register', async (req,res)=>{
   res.send('Done')
 })
 
-
+const test_temp ='nenglkealkzfn$arar'
 
 router.post('/login',async(req,res)=>{
   try{  
@@ -48,7 +48,12 @@ router.post('/login',async(req,res)=>{
     if(db_email.email === email){
       const UncryptedPass = await bcrypt.compare(password,db_email.password)
       if(UncryptedPass){
-        res.end('mrhba bik again')
+        const token = jwt.sign(db_email.name, test_temp);
+        res.json({
+          message : 'Fin al3awd tfdl, and MRHHHHHHHHHBA',
+          jwt :token
+        })
+        // res.end('mrhba bik again')
       } else {
         res.end('GO REGISTER NOOOOOOOOOW')
       }
