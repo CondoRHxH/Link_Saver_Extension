@@ -9,6 +9,8 @@ const app = express()
 
 app.use('/',router)
 app.use('/',linksRouter)
+app.use('/fetch', require('./utils/metadata')) //To test out any route if it is working
+
 
 
 async function connection(){
@@ -17,6 +19,8 @@ async function connection(){
 }
 
 app.use('/', require('./routes/links')) //To test out any route if it is working
+
+
 
 
 connection().then(msg => console.log('connection good', msg)).catch(err => console.log(err))

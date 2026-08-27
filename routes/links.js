@@ -2,30 +2,99 @@ const express = require('express')
 const link  = require('../model/link')
 const auth = require('../middleware/auth')
 const user = require('../model/user')
-
+const axios = require('axios')
+const cheerio = require('cheerio')
 
 const router = express.Router()
 
 
-router.post('/links',auth, async(req,res)=>{
+router.post('/links-add/:url',auth, async(req,res)=>{
     if(req.user){
         console.log(req.user)
-        let {url,title,description,note,tags} = req.body
-        const user_Id = req.user.userId
+        let {description,note,tags} = req.body
 
-        const created_urls = await link.create({
-            userId:user_Id,
-            url:url,
-            title:title,
-            description:description,
-            note:note,
-            tags:tags,
-        })
-        if(created_urls){
-            res.end('Created Succefully')
-        } else{
-            res.end('Something wrong')
+        
+
+        const user_Id = req.user.userId
+        if (!req.params.url) {
+            return res.status(400).json({
+                error: 'URL is required'
+            })
         }
+
+        // URL must be a string
+        if (typeof req.params.url !== 'string') {
+            return res.status(400).json({
+                error: 'URL must be a string'
+            })
+        }
+
+        if (tags && !Array.isArray(tags)) {
+            return res.status(400).json({
+                error: 'Tags must be an array'
+            })
+        }
+        try{
+        
+            const target = req.params.url.startsWith('http') 
+            ? req.params.url 
+            : `https://${req.params.url}`;
+        
+            const dataFrom = await fetch(target);
+            const html = await dataFrom.text();
+        
+            // res.send(html); // or res.json({ html })
+            console.log('this is the link entererd',target)
+            console.log('this is the html',html)
+
+            // const cherio_url = cheerio.load(/<title>([^<]*)<\/title>/)
+        
+            const $ = cheerio.load(html);
+                
+            const title_html = $('title').text()
+            // const url= req.params.url
+        
+            console.log('The title ',title_html)
+            // console.log(cherio_url)
+            // const dataFrom = await fetch(req.params.url)
+            // console.log("haadad data",dataFrom)
+            // const html = await dataFrom.text();
+            const created_urls = await link.create({
+                userId:user_Id,
+                url:target,
+                title:title_html,
+                description:description,
+                note:note,
+                tags:tags,
+            } )
+            console.log("Hada HTML",html)
+            res.send('Done ajomiiiii')
+            
+            }catch(err){
+                console.log('errer')
+            }
+
+        
+        // try{
+        //     const created_urls = await link.create({
+        //     userId:user_Id,
+        //     url:url,
+        //     title:title,
+        //     description:description,
+        //     note:note,
+        //     tags:tags,
+        // })
+        //     res.status(201).json("good")
+        // }catch(err){
+        //     res.status(500).json('nope')
+        // }
+
+
+        // if(created_urls){
+        //     res.end('Created Succefully')
+        // } else{
+        //     res.end('Something wrong')
+        // }
         // res.send('hy')
         console.log('Hy')
     }else{
