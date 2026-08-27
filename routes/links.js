@@ -36,5 +36,18 @@ router.post('/links',auth, async(req,res)=>{
 })
 
 
+router.get('/my-links',auth, async(req,res)=>{
+    // let {url,title,description,note,tags} = req.body;
+
+    const user_Id = req.user.userId
+
+    const user_db = await link.find({userId:user_Id})
+    console.log(user_db)
+
+    if(user_db){
+        return res.json(user_db)
+    }
+
+})
 
 module.exports = router
