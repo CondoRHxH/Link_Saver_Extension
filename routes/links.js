@@ -42,11 +42,28 @@ router.get('/my-links',auth, async(req,res)=>{
     const user_Id = req.user.userId
 
     const user_db = await link.find({userId:user_Id})
-    console.log(user_db)
+    
 
     if(user_db){
         return res.json(user_db)
     }
+
+})
+
+router.get('/my-links/:url',auth, async (req,res)=>{
+    // const user_Id = req.user.userId
+    // console.log('user idididid',user_Id)
+    
+        const user_db = await link.findOne({
+            url: req.params.url,
+            userId: req.user.userId
+        })
+        console.log('user dbdbbdbdbdb',user_db)
+        res.json({
+            url: req.params.url,
+            userId: req.user.userId
+        })
+        // res.json(user_Id.url)
 
 })
 
