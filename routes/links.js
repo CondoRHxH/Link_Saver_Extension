@@ -7,15 +7,34 @@ const user = require('../model/user')
 const router = express.Router()
 
 
-router.post('/links',auth,(req,res)=>{
+router.post('/links',auth, async(req,res)=>{
     if(req.user){
         console.log(req.user)
-    res.send('hy')
+        let {url,title,description,note,tags} = req.body
+        const user_Id = req.user.userId
+
+        const created_urls = await link.create({
+            userId:user_Id,
+            url:url,
+            title:title,
+            description:description,
+            note:note,
+            tags:tags,
+        })
+        if(created_urls){
+            res.end('Created Succefully')
+        } else{
+            res.end('Something wrong')
+        }
+        // res.send('hy')
+        console.log('Hy')
     }else{
            console.log('no req.user found')
         res.status(401).send('Unauthorized')
     }
    
 })
+
+
 
 module.exports = router
