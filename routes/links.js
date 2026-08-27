@@ -84,4 +84,24 @@ router.post('/my-links-change/:url',auth, async(req,res)=>{
         res.end('No change')
     }
 })
+
+
+router.delete('/my-links-del/:url',auth, async(req,res)=>{
+    const user_db = await link.findOne({
+        url:req.params.url,
+        userId:req.user.userId
+    })
+    console.log("hadiii user",user_db)
+
+    const del_db = await link.findOneAndDelete({_id:user_db.id})
+    console.log("hada bodddydyy",req.body)
+    console.log("hada dbbbb",del_db)
+
+    if(del_db){
+        res.end('Deleted Succefully')
+    } else{
+        res.end('NOt deleted')
+    }
+})
+
 module.exports = router
