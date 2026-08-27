@@ -67,4 +67,21 @@ router.get('/my-links/:url',auth, async (req,res)=>{
 
 })
 
+
+router.post('/my-links-change/:url',auth, async(req,res)=>{
+
+    const user_db = await link.findOne({
+        url : req.params.url,
+        userId:req.user.userId
+    })
+    console.log('hada bodyyd',req.body)
+    
+    const change_db = await link.findOneAndUpdate(user_db,req.body)
+
+    if(change_db){
+        res.end('Changed')
+    }else{
+        res.end('No change')
+    }
+})
 module.exports = router
