@@ -8,22 +8,22 @@ const cheerio = require('cheerio')
 const router = express.Router()
 
 
-router.post('/links-add/:url',auth, async(req,res)=>{
+router.post('/links-add',auth, async(req,res)=>{
     if(req.user){
         console.log(req.user)
-        let {description,note,tags} = req.body
+        let {url,description,note,tags} = req.body
 
         
 
         const user_Id = req.user.userId
-        if (!req.params.url) {
+        if (!url) {
             return res.status(400).json({
                 error: 'URL is required'
             })
         }
 
         // URL must be a string
-        if (typeof req.params.url !== 'string') {
+        if (typeof url !== 'string') {
             return res.status(400).json({
                 error: 'URL must be a string'
             })
@@ -36,9 +36,9 @@ router.post('/links-add/:url',auth, async(req,res)=>{
         }
         try{
         
-            const target = req.params.url.startsWith('http') 
-            ? req.params.url 
-            : `https://${req.params.url}`;
+            const target = url.startsWith('http') 
+            ? url 
+            : `https://${url}`;
         
             const dataFrom = await fetch(target);
             const html = await dataFrom.text();

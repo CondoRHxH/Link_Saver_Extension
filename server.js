@@ -6,7 +6,7 @@ const router = require('./routes/auth')
 const linksRouter = require('./routes/links')
 
 const app = express()
-
+app.use(express.json())
 app.use('/',router)
 app.use('/',linksRouter)
 app.use('/fetch', require('./utils/metadata')) //To test out any route if it is working

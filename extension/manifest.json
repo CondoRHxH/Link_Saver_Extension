@@ -1,0 +1,16 @@
+{
+  "manifest_version": 3,
+  "name": "Link Saver",
+  "version": "1.0.0",
+  "description": "Save links to my personal link manager",
+  "permissions": [
+    "tabs",
+    "storage"
+  ],
+  "host_permissions": [
+    "http://localhost:3000/*"
+    ],
+  "action": {
+    "default_popup": "popup.html"
+  }
+}
