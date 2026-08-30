@@ -19,7 +19,7 @@ bcrypt (password hashing)
 JWT (authentication)
 
 ## Project Structure
-
+```
 link-saver/
 ├── extension/       # Browser extension (popup UI, login/save screens)
 ├── middleware/       # Auth / request middleware
@@ -29,6 +29,7 @@ link-saver/
 ├── server.js           # App entry point
 ├── package.json
 └── .gitignore
+```
 ## 🖥️ Screenshots
 
 - Logo
@@ -45,16 +46,19 @@ link-saver/
 
 ## ⚙️ Installation
 1. Clone the repo
-bash
+```
 git clone https://github.com/CondoRHxH/link-saver
 cd link-saver
+```
 2. Install dependencies
-
+```
 npm install
+```
 3. Add environment variables
 4. Run the server
-bash
+```
 node server.js
+```
 5. Load the extension
 
 In your browser, go to the extensions page, enable developer mode, and load the extension/ folder as an unpacked extension.
