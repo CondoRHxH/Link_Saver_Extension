@@ -1,6 +1,6 @@
 # Link Saver
 
-Link Saver is a browser extension + backend API for saving and organizing links. Log in, capture the page you're on, and attach a description, note, and tags — the backend auto-fetches page metadata from the URL so you don't have to fill everything in by hand.
+Link Saver is a browser extension + backend API for saving and organizing links. Log in, capture the page you're on, and attach a description, note, and tags the backend auto-fetches page metadata from the URL so you don't have to fill everything in by hand.
 
 ## Features
 - User authentication (login) with JWT-based sessions
