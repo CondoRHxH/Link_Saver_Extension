@@ -20,7 +20,7 @@ metadata.get('/:url', async(req,res)=>{
 
         res.send(html); // or res.json({ html })
         console.log('this is the link entererd',target)
-        // const cherio_url = cheerio.load(/<title>([^<]*)<\/title>/)
+        
 
         const $ = cheerio.load(html);
         
@@ -28,12 +28,7 @@ metadata.get('/:url', async(req,res)=>{
         // const url= req.params.url
 
         console.log('The title ',title_html)
-        // console.log(cherio_url)
-        // const dataFrom = await fetch(req.params.url)
-        // console.log("haadad data",dataFrom)
-        // const html = await dataFrom.text();
-
-        // console.log("Hada HTML",html)
+        
     } 
 
     catch(err){
