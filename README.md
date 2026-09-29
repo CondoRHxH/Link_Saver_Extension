@@ -30,7 +30,7 @@ link-saver/
 ├── package.json
 └── .gitignore
 ```
-## 🖥️ Screenshots
+## Screenshots
 
 - Logo :
 
@@ -44,7 +44,7 @@ link-saver/
 
 <img width="375" height="490" alt="image" src="https://github.com/user-attachments/assets/4b589e94-18a9-4319-a309-7462293a1be3" />
 
-## ⚙️ Installation
+## Installation
 1. Clone the repo
 ```
 git clone https://github.com/CondoRHxH/link-saver
