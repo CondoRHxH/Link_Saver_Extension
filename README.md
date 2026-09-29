@@ -6,7 +6,7 @@ Link Saver is a browser extension + backend API for saving and organizing links.
 - User authentication (login) with JWT-based sessions
 - Passwords hashed with bcrypt
 - Browser extension popup for quick saving
-- Auto CRUD from URL fetching — scrapes page info via Cheerio when you save a link
+- Auto CRUD from URL fetching scrapes page info via Cheerio when you save a link
 - Description, note, and tag support per saved link
 -  MongoDB storage for users and links
 
