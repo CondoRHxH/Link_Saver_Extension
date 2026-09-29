@@ -55,10 +55,7 @@ router.post('/links-add',auth, async(req,res)=>{
             // const url= req.params.url
         
             console.log('The title ',title_html)
-            // console.log(cherio_url)
-            // const dataFrom = await fetch(req.params.url)
-            // console.log("haadad data",dataFrom)
-            // const html = await dataFrom.text();
+
             const created_urls = await link.create({
                 userId:user_Id,
                 url:target,
