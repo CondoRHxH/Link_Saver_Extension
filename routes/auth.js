@@ -68,12 +68,6 @@ router.post('/login',async(req,res)=>{
   }
 
 
-
-
-
-
-
-
   // const user = await user.findOne({ name:req.body.name,email: req.body.email, password:req.body.password }); 
   // console.log(user)
   
