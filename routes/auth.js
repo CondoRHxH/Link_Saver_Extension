@@ -59,7 +59,7 @@ router.post('/login',async(req,res)=>{
         })
         // res.end('Signed In')
       } else {
-        res.end('GO REGISTER NOOOOOOOOOW')
+        res.end('Go Register')
       }
     }
 
