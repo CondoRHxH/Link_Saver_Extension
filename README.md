@@ -32,11 +32,11 @@ link-saver/
 ```
 ## 🖥️ Screenshots
 
-- Logo
+- Logo :
 
 <img width="128" height="128" alt="icon-128" src="https://github.com/user-attachments/assets/84a77143-1941-4fe0-babc-63c6520e0cc8" />
 
-- Login
+- Login Window :
 
 <img width="376" height="351" alt="image" src="https://github.com/user-attachments/assets/3164f872-40fe-4c45-87a9-328e79e6465d" />
 
@@ -63,7 +63,7 @@ node server.js
 
 In your browser, go to the extensions page, enable developer mode, and load the extension/ folder as an unpacked extension.
 
-## 📌 Usage
+## Usage
 Sign up or log in through the extension popup.
 Browse to a page you want to save.
 Open the extension, add a description, note, and tags.
