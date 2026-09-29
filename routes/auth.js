@@ -54,7 +54,7 @@ router.post('/login',async(req,res)=>{
       if(UncryptedPass){
         const token = jwt.sign({userId: db_email._id.toString()}, test_temp);
         res.json({
-          message : 'Fin al3awd tfdl, and MRHHHHHHHHHBA',
+          message : 'Welcome',
           jwt :token
         })
         // res.end('Signed In')
