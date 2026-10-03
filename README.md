@@ -11,12 +11,12 @@ Link Saver is a browser extension + backend API for saving and organizing links.
 -  MongoDB storage for users and links
 
 ## Tech Stack
-Node.js
-Express
-MongoDB (Mongoose)
-Cheerio (URL/HTML scraping)
-bcrypt (password hashing)
-JWT (authentication)
+- Node.js
+- Express
+- MongoDB (Mongoose)
+- Cheerio (URL/HTML scraping)
+- bcrypt (password hashing)
+- JWT (authentication)
 
 ## Project Structure
 ```
