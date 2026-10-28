@@ -45,21 +45,21 @@ link-saver/
 <img width="375" height="490" alt="image" src="https://github.com/user-attachments/assets/4b589e94-18a9-4319-a309-7462293a1be3" />
 
 ## Installation
-1. Clone the repo
+1. Clone the repo.
 ```
 git clone https://github.com/CondoRHxH/link-saver
 cd link-saver
 ```
-2. Install dependencies
+2. Install dependencies.
 ```
 npm install
 ```
-3. Add environment variables
-4. Run the server
+3. Add environment variables.
+4. Run the server.
 ```
 node server.js
 ```
-5. Load the extension
+5. Load the extension.
 
 In your browser, go to the extensions page, enable developer mode, and load the extension/ folder as an unpacked extension.
 
