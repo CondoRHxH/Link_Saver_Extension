@@ -21,12 +21,12 @@ Link Saver is a browser extension + backend API for saving and organizing links.
 ## Project Structure
 ```
 link-saver/
-├── extension/       # Browser extension (popup UI, login/save screens)
+├── extension/        # Browser extension (popup UI, login/save screens)
 ├── middleware/       # Auth / request middleware
-├── model/             # Mongoose models (User, Link, JWT handling)
-├── routes/            # Express route handlers
-├── utils/              # Helpers, incl. URL fetching / Cheerio scraping
-├── server.js           # App entry point
+├── model/            # Mongoose models (User, Link, JWT handling)
+├── routes/           # Express route handlers
+├── utils/            # Helpers, incl. URL fetching / Cheerio scraping
+├── server.js         # App entry point
 ├── package.json
 └── .gitignore
 ```
