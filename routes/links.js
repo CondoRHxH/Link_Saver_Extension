@@ -64,8 +64,8 @@ router.post('/links-add',auth, async(req,res)=>{
                 note:note,
                 tags:tags,
             } )
-            console.log("Hada HTML",html)
-            res.send('Done ajomiiiii')
+            console.log("This HTML",html)
+            res.send('Done')
             
             }catch(err){
                 console.log('errer')
@@ -124,7 +124,7 @@ router.get('/my-links/:url',auth, async (req,res)=>{
             url: req.params.url,
             userId: req.user.userId
         })
-        console.log('user dbdbbdbdbdb',user_db)
+        console.log('user',user_db)
         res.json({
             url: req.params.url,
             userId: req.user.userId
@@ -140,7 +140,7 @@ router.post('/my-links-change/:url',auth, async(req,res)=>{
         url : req.params.url,
         userId:req.user.userId
     })
-    console.log('hada bodyyd',req.body)
+    console.log('This body',req.body)
     
     const change_db = await link.findOneAndUpdate(user_db,req.body)
 
@@ -157,7 +157,7 @@ router.delete('/my-links-del/:url',auth, async(req,res)=>{
         url:req.params.url,
         userId:req.user.userId
     })
-    console.log("hadiii user",user_db)
+    console.log("This  user",user_db)
 
     const del_db = await link.findOneAndDelete({_id:user_db.id})
     console.log("hada bodddydyy",req.body)
@@ -166,7 +166,7 @@ router.delete('/my-links-del/:url',auth, async(req,res)=>{
     if(del_db){
         res.end('Deleted Succefully')
     } else{
-        res.end('NOt deleted')
+        res.end('Not deleted')
     }
 })
 
